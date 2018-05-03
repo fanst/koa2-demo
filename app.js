@@ -2,7 +2,7 @@
  * @Author: xujie 
  * @Date: 2018-04-20 16:58:54 
  * @Last Modified by: xujie
- * @Last Modified time: 2018-05-02 16:16:40
+ * @Last Modified time: 2018-05-03 16:36:55
  */
 
 const Koa = require('koa');
@@ -13,11 +13,12 @@ const bodyparser = require('koa-bodyparser');
 const rest =require('./utils/rest');
 const session = require('koa-session');
 
-const cors =require('koa-cors');
+const cors =require('koa2-cors');
 
 const app = new Koa();
 
-//设置Access-Control-Allow-Credentials:true，表示跨域时，允许cookie添加到请求中
+//cors详解 https://www.cnblogs.com/yanglang/p/6720887.html
+//Access-Control-Allow-Credentials为服务端标识浏览器请求CORS时是否可以附带身份凭证，对于附带身份凭证的请求，服务器不得设置 Access-Control-Allow-Origin 的值为“*”。
 app.use(cors({
   credentials: true, 
   origin: 'http://localhost:9090', // web前端服务器地址
